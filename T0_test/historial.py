@@ -1,10 +1,17 @@
 import datetime
 from parametros import ABANDONAR_FRASE
 from parametros import VOLVER_FRASE
+import time
+import git
 
 def historial(tipo_chat, emisor, receptor, grupos_completos):
     programa = True
     while programa:
+        try:
+            repo = git.Repo("https://github.com/Juan-Carlos-Ferrer-Barros/probando-whatsapp.git")
+            repo.remotes.origin.pull()
+        except (git.exc.InvalidGitRepositoryError, git.exc.NoSuchPathError):
+            print("Invalid repository: {}".format(local_path)
         with open("mensajes.csv", "r", encoding = "utf-8") as file:
             msj = file.readlines()
         mensajes_listados = []
@@ -55,6 +62,9 @@ def historial(tipo_chat, emisor, receptor, grupos_completos):
         msj = "".join(msj)
         with open("mensajes.csv", "w", encoding = "utf-8") as file:
             file.write(msj)
+        repo.index.add(".")
+        repo.index.commit("test wasa")
+        repo.remotes.origin.push()
         
 
 

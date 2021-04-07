@@ -1,5 +1,6 @@
 from menu_de_chats import menu_chats
 import os
+import git
 
 def menu_inicio():
     programa = True
